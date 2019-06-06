@@ -16,6 +16,7 @@ export default class AddBook extends Component {
       title_unsaved :"",
       year_unsaved :0,
     }
+    this.handleSave = this.handleAdd.bind(this);
   }
 
   handleChange = (e, type) => {
@@ -24,7 +25,7 @@ export default class AddBook extends Component {
     });
   }
 
-  handleSave = () => {
+  handleAdd(){
     console.log("Saving book...");
     let author = this.state.author_unsaved;
     let title  = this.state.title_unsaved;
@@ -37,10 +38,10 @@ export default class AddBook extends Component {
     }
 
     this.props.callBackDataTransfer({
-      "Author" : author,
-      "Title"  : title,
-      "Year"   : year
-    });
+      author:this.state.author_unsaved,
+      title:this.state.title_unsaved,
+      year:this.state.year_unsaved
+    })
     this.props.onClose(false);
   }
 
